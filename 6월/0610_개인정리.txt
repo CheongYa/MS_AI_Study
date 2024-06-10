@@ -1,0 +1,41 @@
+<오전>
+
+1. 3D 이미지 생성
+fooocus(https://fooocus.one/ko)를 활용하여 AI 이미지 생성
+ms 제공해준 stable diffusion를 활용하여 AI 이미지 생성
+
+2. 좋은 이미지 프롬프트 예제
+stable diffusion을 활용하여 AI 이미지를 변경하고 배경을 입혀보고 자세를 변경하는 등의 실습 실행
+
+3. [프로젝트] 스테이블 디퓨전으로 웹툰 또는 화보 만들기
+4컷만화 형식으로 제작하였으며 순서대로 내가 생각한 프롬프트를 넣어보겠다.
+1) You are teaching a class in school called “Presentation of the work done today”. The green chalkboard says “Presentation” and you are standing in front of the board, with students sitting in front of you.
+2) The students in the class begin to panic and get nervous.
+3) The student has a determined look on his face and thinks, “I should sit in the back.”
+4)All the students back away and eventually break through the wall and get out of the classroom, cute
+
+4. RUNWAY-GEN2, VIDNOZ-AI 사용법
+VIDNOZ = 소개 영상(약30초)분량의 컨텐츠 만들기 유용한 사이트
+RUNWAY = 간단한 GIF(약4초)분량의 컨텐츠 만들기 유용한 사이트
+
+5. 작품 공유하기
+
+<오후>
+
+1. 스테이블 디퓨전 확장기능 tagger, controlNet Video to Video 등 사용해보기
+
+아래는 이미지를 생성하는데 활용한 프롬프트
+(masterpiece), (best quality), (extremely detailed), (Full detail feature), 16k, ((Pixar animation style)), ((standing full body)), Whole body, ((beautiful face)), long straight hair girl, White Thighhighs, white dress, wide sleeves, pleated skirt
+
+a girl, (emilia), long hair, (white hair), (pants), T-shirt, large breasts<lora:remramemilia:1>, (masterpiece), (best quality),(Full detail feature), ((standing full body)), Whole body, ((beautiful face)), smile
+
+2. ezgif 사용
+대량의 이미지를 모아 gif 이미지와 같은 것으로 만들어주는 사이트.
+
+3. Viggle AI 사용
+이미지와 모션 영상을 이용하여 이미지가 영상의 모션을 따라하게 만드는 사이트.
+
+4. capcut 사용하기
+- 모션과 배경 합치기 및 편집
+
+
