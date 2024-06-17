@@ -1,0 +1,29 @@
+<오전>
+[워드프레스 설치 실습]
+
+- 워드프레스란?
+워드프레스란 대표적인 웹 콘텐츠 관리 시스템 (Contents Management System)으로 개인들도 손쉽게 웹 사이트를 구축할 수 있는 도구입니다.
+
+1. Azure 리소스 생성
+
+2. 가상 머신 생성
+
+3. ssh 명령을 이용해 접속
+
+4. mariaDB 설치 및 접속
+▶ sudo mysql_secure_installation (설치)
+▶ sudo mysql -u root (실행)
+▶ show databases; (데이터베이스 확인)
+▶ exit (종료)
+
+5. wordpress 설치 및 초기 설정
+▶ sudo wget https://ko.wordpress.org/latest-ko_KR.tar.gz (설치)
+▶ sudo tar -xvzf latest-ko_KR.tar.gz (압축 해제)
+
+<오후>
+
+1. Azure에서 생성한 vm의 DNS 설정
+
+2. wordpress의 주소 변경
+
+3. wordpress 테마 설정 및 사용해보기
