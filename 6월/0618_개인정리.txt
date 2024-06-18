@@ -1,0 +1,22 @@
+<오전>
+
+- stable diffusion 사용 실습
+
+- 워드 프레스 실습
+
+- Azure 실습
+
+
+
+<오후>
+
+- github 아이디 생성
+
+- github codespaces 실습
+
+
+
+
+
+
+
