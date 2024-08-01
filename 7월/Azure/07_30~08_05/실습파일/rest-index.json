@@ -1,0 +1,65 @@
+{
+    "name": "rest-index",
+    "fields": [
+      {
+        "name": "id",
+        "type": "Edm.String",
+        "key": true
+      },
+      {
+        "name": "name",
+        "type": "Edm.String",
+        "key": false
+      },
+      {
+        "name": "area",
+        "type": "Edm.String",
+        "key": false
+      },
+      {
+        "name": "administrative_building",
+        "type": "Edm.String",
+        "key": false
+      },
+      {
+        "name": "address",
+        "type": "Edm.String",
+        "key": false
+      },
+      {
+        "name": "running_time",
+        "type": "Edm.String",
+        "key": false
+      },
+      {
+        "name": "latitude",
+        "type": "Edm.String",
+        "key": false
+      },
+      {
+        "name": "longitude",
+        "type": "Edm.String",
+        "key": false
+      },
+      {
+        "name": "telephone",
+        "type": "Edm.String",
+        "key": false
+      },
+      {
+        "name": "data_time",
+        "type": "Edm.String",
+        "key": false
+      },
+      {
+        "name": "department_in_charge",
+        "type": "Edm.String",
+        "key": false
+      },
+      {
+        "name": "manager",
+        "type": "Edm.String",
+        "key": false
+      }
+    ]
+  }
