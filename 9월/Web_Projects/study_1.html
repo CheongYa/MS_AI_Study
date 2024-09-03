@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="" autocomplete="off">
+            <fieldset>
+                <legend>상품 선택</legend>
+                <p><b>예약하실 관광 상품을 선택해 주세요.</b></p>
+                <ul>
+                    <li><label><input type="checkbox" value="d_10">주중 오전 관람</label><input type="number">장</li>
+                    <li><label><input type="checkbox" value="d_13">주중 오후 관람</label><input type="number">장</li>
+                    <li><label><input type="checkbox" value="s_10">주말 오전 관람</label><input type="number">장</li>
+                    <li><label><input type="checkbox" value="s_13">주말 오후 관람</label><input type="number">장</li>
+                </ul>
+
+                <label for="tour1">관람 시간 선택</label>
+                <select id="tour1">
+                    <option value="day_10">주중 오전(10시)</option>
+                    <option value="day_13">주중 오후(13시)</option>
+                    <option value="sat_10">주말 오전(10시)</option>
+                    <option value="sat_13">주말 오후(13시)</option>
+                </select> <input type="number">장
+                <p><b>관람 인원 구분</b></p>
+                <ul>
+                    <li><label><input type="radio" name="group1" value="yes">단체</label></li>
+                    <li><label><input type="radio" name="group1" value="no">개인</label></li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>예약 정보</legend>
+                <ul>
+                    <li><label for="userid">이름</label> <input type="text" id="userid" autofocus required></li>
+                    <li><label for="addr">주소</label> <input type="text" id="addr"></li>
+                    <li><label for="mail">이메일</label> <input type="email" id="mail"></li>
+                    <li><label for="number">연락처</label> <input type="text" id="number" required></li>
+                </ul>
+                <input type="submit" value="전송">
+                <input type="reset" value="취소">
+            </fieldset>
+        </form>
+    </body>
+</html>

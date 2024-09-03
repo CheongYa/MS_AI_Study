@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="" autocomplete="off">
+            <fieldset>
+                <legend>사용자 정보</legend>
+                <ul>
+                    <li><label for="userid">아이디</label> <input type="text" id="userid" placeholder="4자 ~ 10자 사이, 공백 없이" autofocus required></li>
+                    <li><label for="mail">이메일</label> <input type="email" id="mail"></li>
+                    <li><label for="password">비밀번호</label> <input type="text" id="password" placeholder="문자와 숫자, 특수 기호 포함" required></li>
+                    <li><label for="password_1">비밀번호 확인</label> <input type="text" id="password_1" required></li>
+                    <li><label for="channel">가입 경로</label>
+                        <select id="channel">
+                            <option value="blog">블로그</option>
+                            <option value="search">검색</option>
+                            <option value="sns">SNS</option>
+                            <option value="other">기타</option>
+                        </select>
+                    </li>
+                    <li><label for="memo">메모</label> <textarea id="memo" name="memo" placeholder="남길 메모가 있다면 여기에" rows="4" cols="50"></textarea></li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>이벤트와 새로운 소식</legend>
+                <ul>
+                    <li><label><input type="radio" name="group1" value="yes">메일 수신</label></li>
+                    <li><label><input type="radio" name="group1" value="no">메일 수신 안 함</label></li>
+                </ul>
+                <input type="submit" value="가입하기">
+                <input type="reset" value="취소">
+            </fieldset>
+        </form>
+    </body>
+</html>
