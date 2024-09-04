@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>별 패턴</title>
+<style>
+  .pattern-container {
+    display: flex;
+    justify-content: space-around;
+    font-family: monospace;
+    white-space: pre;
+  }
+  .pattern {
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+
+<div class="pattern-container">
+  <div class="pattern" id="leftPattern"></div>
+  <div class="pattern" id="rightPattern"></div>
+</div>
+
+<script>
+function generatePatterns() {
+  const leftPattern = document.getElementById('leftPattern');
+  const rightPattern = document.getElementById('rightPattern');
+  
+  let leftContent = '';
+  let rightContent = '';
+  
+  for (let i = 1; i <= 10; i++) {
+    leftContent += '*'.repeat(i) + '\n';
+    rightContent += '*'.repeat(11 - i) + '\n';
+  }
+  
+  leftPattern.textContent = leftContent;
+  rightPattern.textContent = rightContent;
+}
+
+generatePatterns();
+</script>
+
+</body>
+</html>

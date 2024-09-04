@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>번호 그리드</title>
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  .grid-item {
+    border: 1px solid black;
+    text-align: center;
+    padding: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h1>자리 배치도</h1>
+<div class="grid-container" id="numberGrid">
+  <!-- JavaScript가 이 div를 채울 것입니다 -->
+</div>
+
+<script>
+function populateGrid() {
+  const container = document.getElementById('numberGrid');
+  
+  for (let i = 1; i <= 49; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'grid-item';
+    cell.textContent = '좌석 ' + i;
+    
+    container.appendChild(cell);
+  }
+}
+
+populateGrid();
+</script>
+
+</body>
+</html>

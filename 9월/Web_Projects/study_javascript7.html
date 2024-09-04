@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>숫자 맞추기 게임</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+  }
+  .result {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h1>숫자 맞추기 게임</h1>
+<p>1에서 100 사이의 숫자를 맞춰보세요!</p>
+<input type="number" id="guessField" placeholder="숫자를 입력하세요">
+<button onclick="checkGuess()">확인</button>
+
+<div class="result">
+  <p id="resultMessage"></p>
+  <p id="attemptsMessage"></p>
+</div>
+
+<script>
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+let attempts = 10;
+
+function checkGuess() {
+  const userGuess = Number(document.getElementById('guessField').value);
+  const resultMessage = document.getElementById('resultMessage');
+  const attemptsMessage = document.getElementById('attemptsMessage');
+
+  if (userGuess === randomNumber) {
+    resultMessage.textContent = '축하합니다! 숫자를 맞추셨습니다!';
+    resultMessage.style.color = 'green';
+  } else if (userGuess > randomNumber) {
+    resultMessage.textContent = '너무 높습니다!';
+    resultMessage.style.color = 'red';
+  } else {
+    resultMessage.textContent = '너무 낮습니다!';
+    resultMessage.style.color = 'red';
+  }
+
+  attempts--;
+  attemptsMessage.textContent = `남은 시도 횟수: ${attempts}`;
+
+  if (attempts === 0 && userGuess !== randomNumber) {
+    resultMessage.textContent = `게임 오버! 정답은 ${randomNumber}였습니다.`;
+    resultMessage.style.color = 'black';
+  }
+}
+</script>
+
+</body>
+</html>

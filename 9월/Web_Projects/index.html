@@ -1,21 +1,60 @@
 <!DOCTYPE html>
-<html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <title>웹 퍼블리싱</title>
-    </head>
-    <body>
-        <h1>혁신을 클라우드로 실현하는 예비 엔지니어, 김정연입니다.</h1>
-        <h2>About Me</h2>
-        <h3>Introduction</h3>
-        <p>● 안녕하세요. 클라우드 엔지니어를 꿈꾸는 김정연입니다.</p>
-        <p>● 개발자를 꿈꾸다 클라우드를 접하였고, 클라우드에 대한 재미를 느껴 엔지니어를 지망하게 되었습니다.</p>
-        <p>● 아직은 <b>Azure</b>만 사용을 해봤지만 차차 다른 클라우드도 도전하고 싶습니다.</p>
-        <h3>Contact & Channel</h3>
-        <p>● Email: </p>
-        <p>● Github: </p>
-        <p>● Blog: </p>
-        <h2>Personal Projects</h2>
-        <h3>Microsoft AI School</h3>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Profile Page</title>
+    <link rel="stylesheet" href="css/test-styles.css">
+</head>
+<body bgcolor="C2B4D6">
+    <!-- 첫 번째 섹션 -->
+    <section id="section1" class="section pink">
+        <div class="profile">
+            <img src="images/test.png" alt="Profile Image" class="profile-pic" width="80" height="80">
+            <p class="intro">Hello, I'm CheongYa. Welcome to my profile!</p>
+        </div>
+        <div class="divider"></div>
+    </section>
+    <!-- 두 번째 섹션 -->
+    <section id="section2" class="section yellow">
+        <div class="about">
+            <h2>About Me</h2>
+            <p>안녕하세요. 저는 청야라고 합니다. 저는 ~~~~.</p>
+            <div class="tech-stack">
+                <img src="images/python.png" alt="Tech 1" width="80" height="80">
+                <img src="tech2.png" alt="Tech 2">
+                <img src="tech3.png" alt="Tech 3">
+            </div>
+        </div>
+        <div class="divider"></div>
+    </section>
+    <!-- 세 번째 섹션 -->
+    <section id="section3" class="section teal">
+        <div class="skills">
+            <h2>Skills</h2>
+            <div class="filter-options">
+                <button class="filter-btn" onclick="filterContent('All')">All</button>
+                <button class="filter-btn" onclick="filterContent('Front-end')">Front-End</button>
+                <button class="filter-btn" onclick="filterContent('Back-end')">Back-End</button>
+                <button class="filter-btn" onclick="filterContent('Database')">Database</button>
+                <button class="filter-btn" onclick="filterContent('Cloud')">Cloud</button>
+            </div>
+            <div class="filter-content">
+                <p id="filter-text">Select a category to see details.</p>
+            </div>
+        </div>
+        <div class="divider"></div>
+    </section>
+
+    <!-- 네 번째 섹션 -->
+    <section id="section4" class="section purple">
+        <div class="contact">
+            <h2>Contact</h2>
+            <p>이메일을 통해 언제든지 문의하세요: chch***@naver.com</p>
+        </div>
+        <div class="divider"></div>
+    </section>
+
+    <script src="js/test-script.js"></script>
+</body>
 </html>

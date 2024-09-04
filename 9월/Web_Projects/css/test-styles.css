@@ -1,0 +1,90 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    width: 100%; /* 섹션이 전체 화면을 채우도록 */
+    margin: 0;
+    padding: 0;
+    position: relative; /* 선을 위한 포지션 설정 */
+}
+
+.pink { background-color: pink; }
+.yellow { background-color: yellow; color: black; }
+.teal { background-color: teal; }
+.purple { background-color: purple; }
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.intro {
+    font-size: 1.5rem;
+}
+
+.about h2, .skills h2, .contact h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.tech-stack img {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+.filter-options {
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.filter-btn:hover {
+    background-color: #ccc;
+}
+
+.filter-content {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+#filter-text {
+    font-size: 1.2rem;
+}
+
+/* 섹션 사이의 구분선 */
+.divider {
+    width: 80%;
+    height: 1px;
+    background-color: #ccc;
+    position: absolute;
+    bottom: 0;
+}
