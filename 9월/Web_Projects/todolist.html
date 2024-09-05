@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: left; /* 왼쪽 정렬 */
+        }
+        .todo-item {
+            display: flex;
+            justify-content: flex-start; /* 왼쪽 정렬 */
+            align-items: center;
+            margin: 10px 0;
+        }
+        .todo-item.completed {
+            text-decoration: line-through;
+        }
+        .todo-item span {
+            margin-left: 10px; /* 체크박스와 텍스트 사이 간격 */
+        }
+        .todo-item button {
+            margin-left: 10px; /* 제거하기 버튼을 오른쪽으로 */
+        }
+    </style>
+</head>
+<body>
+    <h1>할 일 목록</h1>
+    <input type="text" id="todo-input" placeholder="할 일을 입력하세요">
+    <button onclick="addTodo()">추가하기</button>
+    <ul id="todo-list"></ul>
+    <script src="js/todolist.js"></script>
+</body>
+</html>

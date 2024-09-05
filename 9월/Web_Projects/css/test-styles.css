@@ -12,10 +12,10 @@ body, html {
     height: 100vh;
     color: white;
     text-align: center;
-    width: 100%; /* 섹션이 전체 화면을 채우도록 */
+    width: 100%;
     margin: 0;
     padding: 0;
-    position: relative; /* 선을 위한 포지션 설정 */
+    position: relative;
 }
 
 .pink { background-color: pink; }
