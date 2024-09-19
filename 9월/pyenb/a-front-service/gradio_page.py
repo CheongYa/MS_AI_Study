@@ -1,8 +1,72 @@
 import gradio as gr
+import requests
+
+cookies = list()
+
+def request_sign_in(username, password):
+    response = requests.post("http://127.0.0.1:8000/v1/users/signin/",
+                 json=dict(
+                     username=username,
+                     password=password
+                 ))
+    status_code = response.status_code
+
+    for key, value in response.cookies.items():
+        cookies.append(f"{key}={value}")
+
+    response_json = response.json()
+    if status_code == 200:
+        # success
+        return response_json.get('message')
+    else:
+        return response_json.get('message')
+
+
+def click_sign_in(username, password):
+    is_succeed = request_sign_in(username, password)
+    if is_succeed:
+        return "로그인에 성공하였습니다.", gr.Textbox(visible=False), gr.Textbox(visible=False), gr.Button(visible=False), gr.Button(visible=True)
+    else:
+        return "로그인에 실패하였습니다.", gr.Textbox(visible=True), gr.Textbox(visible=True), gr.Button(visible=True), gr.Button(visible=False)
+    
+def click_sign_out(username, password):
+    response = requests.get("http://127.0.0.1:8000/v1/users/signout/", headers={
+        "Cookie": "; ".join(cookies)
+    })
+    status_code = response.status_code
+    response_json = response.json()
+    if status_code == 200:
+        cookies.clear()
+        return "로그아웃에 성공하였습니다.", gr.Textbox(value='', visible=True), gr.Textbox(value='', visible=True), gr.Button(visible=True), gr.Button(visible=False)
+    else:
+        return "로그아웃에 실패하였습니다.", gr.Textbox(visible=False), gr.Textbox(visible=False), gr.Button(visible=False), gr.Button(visible=True)
+
+
+def click_me():
+    response = requests.get("http://127.0.0.1:8000/v1/users/me/", headers={
+        "Cookie": "; ".join(cookies)
+    })
+    response_json = response.json()
+    user = response_json.get('user')
+    response_text = f"""
+        결과 : {response_json.get('message')}
+        ### 이메일 : {user.get('username')}\n
+        최근 로그인 : {user.get('last_login')}
+    """
+    return response_text
 
 with gr.Blocks() as demo:
-    chatbot = gr.Chatbot()
-    input_text = gr.Textbox(label="메시지 입력")
-    send_button = gr.Button("전송")
+    username_textbox = gr.Textbox(label="아이디", placeholder="아이디를 입력하세요.")
+    password_textbox = gr.Textbox(label="패스워드", placeholder="패스워드를 입력하세요.", type='password')
+    sign_in_button = gr.Button("로그인")
+    sign_out_button = gr.Button("로그아웃", visible=False)
+    me_button = gr.Button("내 정보 가져오기")
+    result_text = gr.Text(label="결과")
+
+    sign_in_button.click(fn=click_sign_in, inputs=[username_textbox, password_textbox], 
+                         outputs=[result_text, username_textbox, password_textbox, sign_in_button, sign_out_button])
+    sign_out_button.click(fn=click_sign_out, inputs=[],
+                         outputs=[result_text, username_textbox, password_textbox, sign_in_button, sign_out_button])
+    me_button.click(fn=click_me, inputs=[], outputs=[result_text])
 
 demo.launch(server_name="127.0.0.1", server_port=7860)

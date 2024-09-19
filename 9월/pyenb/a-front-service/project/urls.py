@@ -21,5 +21,6 @@ from ai.views import main_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'v1/common/', include('ai.urls.v1.common')),
+    path(r'v1/users/', include('ai.urls.v1.user')),
     path(r'gradio/', main_view),
 ]

@@ -55,8 +55,6 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     username = models.EmailField(max_length=50, unique=True, verbose_name='이메일')
     name = models.CharField(max_length=30, null=True, blank=True, verbose_name='이름')
     phone_number = models.CharField(max_length=15, null=True, verbose_name='전화번호')
-    represent_photo = models.ImageField(verbose_name='대표사진', blank=True)
-    registration_card = models.ImageField(verbose_name='신분증', blank=True)
 
     signup_date = models.DateTimeField(verbose_name='SignUp Date', default=timezone.now)
 
