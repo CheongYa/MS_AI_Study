@@ -29,6 +29,9 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = "ai.User"
 
+AZURE_OPENAI_ENDPOINT = "https://crud-openai.openai.azure.com/openai/deployments/crud-gpt4o/chat/completions?api-version=2024-02-15-preview"
+AZURE_OPENAI_API_KEY = "e52e655fd87c4f32a4746041f581033d"
+
 
 # Application definition
 

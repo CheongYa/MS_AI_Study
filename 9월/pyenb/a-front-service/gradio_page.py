@@ -2,8 +2,23 @@ import gradio as gr
 import requests
 
 cookies = list()
+csrf_token = None
+
+def request_history():
+    response = requests.get("http://127.0.0.1:8000/v1/openai/messages",
+                           headers={
+                                 "Cookie": "; ".join(cookies),
+                                 "X-CSRFToken": csrf_token
+                           })
+    
+    response_json = response.json()
+
+    return response_json['datas']
 
 def request_sign_in(username, password):
+    global cookies
+    global csrf_token
+
     response = requests.post("http://127.0.0.1:8000/v1/users/signin/",
                  json=dict(
                      username=username,
@@ -12,6 +27,8 @@ def request_sign_in(username, password):
     status_code = response.status_code
 
     for key, value in response.cookies.items():
+        if key == "csrftoken":
+            csrf_token = value
         cookies.append(f"{key}={value}")
 
     response_json = response.json()
@@ -20,14 +37,37 @@ def request_sign_in(username, password):
         return response_json.get('message')
     else:
         return response_json.get('message')
+    
+def request_chatgpt(input_text, pre_message_count):
+    global cookies
+    global csrf_token
 
+    response = requests.post("http://127.0.0.1:8000/v1/openai/messages/",
+                             headers={
+                                 "Cookie": "; ".join(cookies),
+                                 "X-CSRFToken": csrf_token
+                             },
+                             json=dict(
+                                 message=input_text,
+                                 pre_message_count=pre_message_count
+                                 ))
+    
+    if response.status_code == 200:
+        response_json = response.json()
+        response_text = response_json["data"]
+
+        return response_text
+    else:
+        return None
+    
 
 def click_sign_in(username, password):
     is_succeed = request_sign_in(username, password)
     if is_succeed:
-        return "로그인에 성공하였습니다.", gr.Textbox(visible=False), gr.Textbox(visible=False), gr.Button(visible=False), gr.Button(visible=True)
+        datas = request_history()
+        return ("로그인에 성공하였습니다.", gr.Textbox(visible=False), gr.Textbox(visible=False), gr.Button(visible=False), gr.Button(visible=True), datas)
     else:
-        return "로그인에 실패하였습니다.", gr.Textbox(visible=True), gr.Textbox(visible=True), gr.Button(visible=True), gr.Button(visible=False)
+        return ("로그인에 실패하였습니다.", gr.Textbox(visible=True), gr.Textbox(visible=True), gr.Button(visible=True), gr.Button(visible=False))
     
 def click_sign_out(username, password):
     response = requests.get("http://127.0.0.1:8000/v1/users/signout/", headers={
@@ -55,18 +95,39 @@ def click_me():
     """
     return response_text
 
+def click_send(input_text, histories, pre_message_count):
+    response_text = request_chatgpt(input_text, pre_message_count)
+    if response_text:
+        histories.append((input_text, response_text))
+
+    return "", histories
+
 with gr.Blocks() as demo:
-    username_textbox = gr.Textbox(label="아이디", placeholder="아이디를 입력하세요.")
-    password_textbox = gr.Textbox(label="패스워드", placeholder="패스워드를 입력하세요.", type='password')
-    sign_in_button = gr.Button("로그인")
-    sign_out_button = gr.Button("로그아웃", visible=False)
-    me_button = gr.Button("내 정보 가져오기")
-    result_text = gr.Text(label="결과")
+
+    # 전체 컨테이너
+    with gr.Row():
+        # GPT
+        with gr.Column(scale=5):
+            chatbot = gr.Chatbot(label="GPT")
+            with gr.Row():
+                input_textbox = gr.Textbox(label="메시지 입력", placeholder="질문을 입력하세요.", scale=5)
+                pre_message_count_textbox = gr.Textbox(label="이전 메시지 수", value=10)
+                send_button = gr.Button("전송", scale=1)
+        
+        # 로그인 관련
+        with gr.Column(scale=1):
+            username_textbox = gr.Textbox(label="아이디", placeholder="아이디를 입력하세요.")
+            password_textbox = gr.Textbox(label="패스워드", placeholder="패스워드를 입력하세요.", type='password')
+            sign_in_button = gr.Button("로그인")
+            sign_out_button = gr.Button("로그아웃", visible=False)
+            me_button = gr.Button("내 정보 가져오기")
+            result_text = gr.Text(label="결과")
 
     sign_in_button.click(fn=click_sign_in, inputs=[username_textbox, password_textbox], 
-                         outputs=[result_text, username_textbox, password_textbox, sign_in_button, sign_out_button])
+                         outputs=[result_text, username_textbox, password_textbox, sign_in_button, sign_out_button, chatbot])
     sign_out_button.click(fn=click_sign_out, inputs=[],
                          outputs=[result_text, username_textbox, password_textbox, sign_in_button, sign_out_button])
     me_button.click(fn=click_me, inputs=[], outputs=[result_text])
+    send_button.click(fn=click_send, inputs=[input_textbox, chatbot, pre_message_count_textbox], outputs=[input_textbox, chatbot])
 
 demo.launch(server_name="127.0.0.1", server_port=7860)

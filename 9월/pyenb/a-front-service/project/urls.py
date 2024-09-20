@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'v1/common/', include('ai.urls.v1.common')),
     path(r'v1/users/', include('ai.urls.v1.user')),
-    path(r'gradio/', main_view),
+    path(r'v1/openai/', include('ai.urls.v1.openai')),
+    # path(r'gradio/', main_view),
 ]
